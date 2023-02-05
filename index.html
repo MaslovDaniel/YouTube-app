@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="onInit()">
+    <header>
+        <h1>WikiTube with Modules</h1>
+        <form onsubmit="onSearch(event)">
+            <input type="search" name="search" placeholder="Search Youtube..." value="The Beatles">
+            <button>🔍</button>
+        </form>
+    </header>
 
     
   

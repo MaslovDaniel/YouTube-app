@@ -1,13 +1,9 @@
 import { storageService } from './storage.service.js'
-
 const KEY = 'videoDB'
-const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=AIzaSyCp8KMTEjR9frWUGpSnc8Cw5cLVe7wRRDM&q=${term}`
-
 
 export const wtService = {
     getVideos,
     getWikis
-
 }
 
 function getVideos(term) {
@@ -38,48 +34,4 @@ function getVideos(term) {
 function getWikis(term) {
     return axios.get(`https://en.wikipedia.org/w/api.php?&origin=*&action=query&list=search&srsearch=${term}&format=json`)
         .then(res => res.data.query.search.splice(0, 5))
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const STORAGE_KEY_CITIES = 'citiesDB'
-// const url = 'http://www.filltext.com/?rows=10&name={city}&population={numberRange|1000,7000}'
-
-function getCities() {
-
-    let cities = loadFromStorage(STORAGE_KEY_CITIES)
-    if (cities && cities.length) {
-        console.log('cities from CACHE', cities)
-        // return cities
-        return Promise.resolve(cities)
-    }
-
-
-    return axios.get(url).then(res => {
-        console.log('FROM AXIOS');
-        cities = res.data
-        saveToStorage(STORAGE_KEY_CITIES, cities)
-
-        // Cache Invalidation
-        setTimeout(() => {
-            saveToStorage(STORAGE_KEY_CITIES, null)
-        }, 5000)
-
-        return cities
-    })
 }

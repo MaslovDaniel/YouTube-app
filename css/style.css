@@ -1,0 +1,15 @@
+/* Cool CSS Debugging Technique */
+.debug * {
+    outline:1px solid gold
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(252, 130, 93);
+}
+
+
